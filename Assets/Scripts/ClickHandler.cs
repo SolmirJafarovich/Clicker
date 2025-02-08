@@ -10,7 +10,7 @@ public class ClickHandler : MonoBehaviour, IPointerClickHandler
     public GameSettings settings; 
     public TMP_Text scoreText; 
     public Button clickButton;
-    public RectTransform clickButtonRect; // Ссылка на кнопку (RectTransform)
+    public RectTransform clickButtonRect; 
     public Button upgradeButton;
 
 
@@ -28,7 +28,6 @@ public class ClickHandler : MonoBehaviour, IPointerClickHandler
 
     private void OnDestroy()
     {
-        // Отписываемся от события, чтобы избежать утечек памяти
         GameEvents.OnUpgradePurchased -= UpgradePointsPerClick;
     }
 
@@ -50,10 +49,9 @@ public class ClickHandler : MonoBehaviour, IPointerClickHandler
             clickButtonRect, eventData.position, eventData.pressEventCamera, out localClickPos
         );
 
-        // Преобразуем в мировые координаты
+
         Vector2 worldClickPos = clickButtonRect.TransformPoint(localClickPos);
 
-        // Вызываем событие с точной позицией клика
         GameEvents.OnClick?.Invoke(worldClickPos);
         UpdateScoreUI();
 
@@ -84,7 +82,6 @@ public class ClickHandler : MonoBehaviour, IPointerClickHandler
 
     private IEnumerator Cooldown()
     {
-        // Меняем цвет кнопки (имитируем зажатость)
         Color originalColor = clickButton.image.color;
         clickButton.image.color = Color.gray;
 

@@ -19,18 +19,39 @@ public class BillManager : MonoBehaviour
     public void SpawnBill(Vector2 position)
     {
         GameObject bill = Instantiate(billPrefab, position, Quaternion.identity, billParent);
-        AnimateBill(bill);
+        AnimateBill(bill, billParent);
     }
 
-    private void AnimateBill(GameObject bill)
+    private void AnimateBill(GameObject bill, Transform upgradeIndicator)
     {
-        Vector2 randomOffset = new Vector2(Random.Range(-400, 400), Random.Range(1400, 1600));
-        bill.transform.DOMove((Vector2)bill.transform.position + randomOffset, 0.5f)
+        RectTransform billTransform = bill.GetComponent<RectTransform>();
+
+        if (billTransform == null) return;
+
+        float randomXOffset = Random.Range(-100f, 100f);
+        float randomRotation = Random.Range(-180f, 180f); 
+        float flightDuration = 0.6f; 
+        float fallDuration = 1.2f; 
+
+
+        Vector2 targetPosition = new Vector2(
+            billTransform.anchoredPosition.x + randomXOffset,
+            upgradeIndicator.position.y + 400
+        );
+
+
+        billTransform.DOAnchorPos(targetPosition, flightDuration)
             .SetEase(Ease.OutQuad)
             .OnComplete(() =>
             {
-                bill.transform.DOMoveY(-Screen.height, 1.5f).SetEase(Ease.InQuad)
+
+            billTransform.DOAnchorPosY(-Screen.height * 0.2f, fallDuration)
+                    .SetEase(Ease.InQuad)
                     .OnComplete(() => Destroy(bill));
             });
+
+        billTransform.DORotate(new Vector3(0, 0, randomRotation), flightDuration + fallDuration, RotateMode.FastBeyond360)
+            .SetEase(Ease.Linear);
     }
+
 }

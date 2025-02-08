@@ -12,9 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 098a0ab2e5eefd34c82ad0a28f671236, type: 3}
   m_Name: GameComponents
   m_EditorClassIdentifier: 
-  clickerButtonSprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  clickerButtonSprite: {fileID: 21300000, guid: 0505b8d6ab628214193bc3630d0a1cd1, type: 3}
   clickerButtonColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  clickerButtonSound: {fileID: 0}
   upgradeButtonSprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   upgradeButtonColor: {r: 0.007843138, g: 1, b: 0.46274513, a: 1}
-  upgradeButtonSound: {fileID: 0}

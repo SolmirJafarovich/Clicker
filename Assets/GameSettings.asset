@@ -15,10 +15,10 @@ MonoBehaviour:
   upgradeCostStart: 10
   clickLVLStart: 0
   pointsPerClickStart: 1
-  upgradeCost: 38
+  upgradeCost: 274
   upgradeIncrement: 2
-  clickLVL: 15
+  clickLVL: 16
   startScore: 0
-  upgradeDifficulty: 1.1
-  pointsPerClick: 31
+  upgradeDifficulty: 1.5
+  pointsPerClick: 33
   clickCooldown: 0.1
