@@ -24,7 +24,7 @@ public class BillManager : MonoBehaviour
 
     private void AnimateBill(GameObject bill)
     {
-        Vector2 randomOffset = new Vector2(Random.Range(-400, 400), Random.Range(1200, 1400));
+        Vector2 randomOffset = new Vector2(Random.Range(-400, 400), Random.Range(1400, 1600));
         bill.transform.DOMove((Vector2)bill.transform.position + randomOffset, 0.5f)
             .SetEase(Ease.OutQuad)
             .OnComplete(() =>
